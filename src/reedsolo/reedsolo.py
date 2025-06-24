@@ -274,7 +274,7 @@ def make_bytearray(c_exp):
                 return array.array(array_type, source)
             try:
                 #double check its an array of ints (this includes bytes and numpy arrays of ints).
-                if isinstance(source[0], numbers.Integral):
+                if len(source)==0 or isinstance(source[0], numbers.Integral):
                     #note: array.array() will bufferize bytes and bytearray inputs, which will cause multiple bytes to be 
                     # packed into a single array element.  This may be what you want if c_exp = 16, but will cause errors otherwise.
                     # The user should be be responsible for packing bytes into an array.array if this is what they want.
